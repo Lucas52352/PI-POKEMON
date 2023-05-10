@@ -26,3 +26,5 @@ const getPokemonsDb = async () => {
         }
     })
 }
+
+module.exports = getPokemonsDb

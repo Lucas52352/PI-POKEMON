@@ -4,6 +4,7 @@ const axios = require('axios')
 const pokemonType = async () => {
     try {
         let types = await Type.findAll({ atrributes: ['id', 'name'] })
+        console.log(types);
 
         if(!types.length) {
 
