@@ -10,21 +10,22 @@ const getPokemonsDb = async () => {
             }
         }
     })
-
-    return pokemonDb.map(pokemon => {
+    
+    return (pokemonDb.map(pokemons => {
         return {
-            id: pokemon.id,
-            height: pokemon.height,
-            weight: pokemon.weight,
-            HP: pokemon.HP,
-            attack: pokemon.attack,
-            defense: pokemon.defense,
-            speed: pokemon.speed,
-            types: pokemon.types,
-            image: pokemon.image,
-            inDB: pokemon.created
+            id: pokemons.id,
+            name: pokemons.name,
+            height: pokemons.height,
+            weight: pokemons.weight,
+            HP: pokemons.HP,
+            attack: pokemons.attack,
+            armor: pokemons.armor,
+            speed: pokemons.speed,
+            types: pokemons.types,
+            image: pokemons.image,
+            inDB: pokemons.created
         }
-    })
+    }))
 }
 
 module.exports = getPokemonsDb

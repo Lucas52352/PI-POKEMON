@@ -5,7 +5,7 @@ const getAllPokemons = async (req, res) => {
     let { name } = req.query
 
     if(name) {
-        let pokemonName = await getPokeByName(toLocaleLowerCase())
+        let pokemonName = await getPokeByName()
 
         if(pokemonName.error) {
             throw new Error(pokemonName.error)

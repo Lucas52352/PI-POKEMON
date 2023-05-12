@@ -5,7 +5,8 @@ module.exports = (sequelize) => {
         id: {
             primaryKey: true,
             type: DataTypes.UUID,
-            defaultValue: DataTypes.UUIDV4
+            defaultValue: DataTypes.UUIDV4,
+            autoIncrement: true
         },
         name: {
             type: DataTypes.STRING,
@@ -15,10 +16,10 @@ module.exports = (sequelize) => {
     
         image: {
             type: DataTypes.STRING,
-            allowNull: false,
             validate: {
                 isUrl: true
-            }
+            },
+            unique: true
         },
     
         HP: {
@@ -28,7 +29,7 @@ module.exports = (sequelize) => {
     
         armor: {
             type: DataTypes.INTEGER,
-            allowNull: false
+            allowNull: true
         },
     
         speed: {
@@ -41,6 +42,6 @@ module.exports = (sequelize) => {
 
         weight: {
             type: DataTypes.STRING
-        }
+        },
     })
 }

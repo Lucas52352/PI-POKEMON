@@ -1,45 +1,35 @@
-const { Pokemons, Types } = require('../../db')
-const newPkImg = 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fcodepen.io%2Fausten-wade%2Fpen%2FmGEYeE%3Fcss-preprocessor%3Dless&psig=AOvVaw14H9w6XB7ADxxIJ-T9yMhV&ust=1683675419989000&source=images&cd=vfe&ved=0CBEQjRxqFwoTCJDboe_x5v4CFQAAAAAdAAAAABAD'
+const { Pokemons, Types } = require('../../db');
 
-let newPokemon = async (
-    id,
-    name,
-    image,
-    HP,
-    attack,
-    defense,
-    speed,
-    height,
-    weight,
-    types
-) => {
-    const foundPoke = await Pokemons.findOne({ where: { name: name } })
+const createPokemon = async (name, image, HP, attack, armor, speed, height, weight, types) => {
 
-    if(foundPoke) throw new Error('That pokemon has already been created')
+  const foundPoke = await Pokemons.findOne({ where: { name: name } });
 
-    const createPokemon = await Pokemons.create({
-        id,
-        name,
-        HP,
-        attack,
-        defense,
-        height,
-        weight,
-        speed,
-        types,
-        image: image ? image : newPkImg
-    })
+  if (foundPoke) {
+    throw new Error('That pokemon has already been created');
+  }
 
-    const typeDb = await Types.findAll({
-        where: {
-            name: types,
-        }
-    })
+  const createdPokemon = await Pokemons.create({
 
-    createPokemon.addType(typeDb)
-    tipo = typeDb.map((elem) => elem.name)
+    name: name,
+    HP: HP,
+    attack: attack,
+    armor: armor,
+    height: height,
+    weight: weight,
+    speed: speed,
+    image: image 
+    },
+  );
 
-    return `Successfully created pokemon, with id: ${createPokemon.id} and type: ${tipo}`
-}
+  const typeInstances = await Types.findAll({
+    where: { name: types },
+  });
 
-module.exports = newPokemon
+  await createdPokemon.addTypes(typeInstances);
+
+  const tipo = typeInstances.map((elem) => elem.name);
+
+  return `Successfully created pokemon, with id: ${createdPokemon.id} and type: ${tipo}`;
+};
+
+module.exports = createPokemon;

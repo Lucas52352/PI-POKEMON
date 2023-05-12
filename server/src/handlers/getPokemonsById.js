@@ -2,7 +2,7 @@ const getPokemonsById = require('../controllers/pokemon/getPokeById')
 
 const getById = async (req, res) => {
     const { id } = req.params
-    const source = isNaN ? 'db' : 'pokeapi'
+    const source = isNaN(id) ? 'db' : 'pokeapi'
     
     try {
 

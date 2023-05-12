@@ -5,9 +5,10 @@ const allPokemons = async () => {
 
     const pokemonApi = await getPokeByApi()
     const pokemonsDb = await getPokeByDb()
-    const allPokemons = pokemonsDb ? [...pokemonApi, ...pokemonsDb] : pokemonApi
 
-    return allPokemons
+    const getAllPokemons = [...pokemonApi, ...pokemonsDb]
+
+    return getAllPokemons
 }
 
 module.exports = allPokemons

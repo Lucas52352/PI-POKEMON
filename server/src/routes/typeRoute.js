@@ -1,22 +1,33 @@
-const { Router } = require('express')
-const typeRoute = Router()
+const axios = require('axios');
+const { Router } = require('express');
+const { Types } = require('../db.js');
 
-//controller
-
-const pokemonType = require('../controllers/type/pokemonType')
-
-// Rutas
+const typeRoute = Router();
 
 typeRoute.get('/', async (req, res) => {
+
     try {
+        
+        const typeApi = await axios.get('https://pokeapi.co/api/v2/type');
+        
+        
+    const types = typeApi.data.results.map(type => { return {
+        name: type.name
+    }});
 
-        let allTypes = pokemonType()
-        if(allTypes.error) throw new Error(allTypes.error)
+    await Types.bulkCreate(types);
+    
+    const allTypes = await Types.findAll();
 
-        return res.status(200).json(allTypes)
-    } catch (error) {
-        return res.status(400).json({ error: error.message})
-    }
-})
+    return res
+      .status(200)
+      .json(allTypes);
 
-module.exports = typeRoute
+  } catch (error) {
+
+    return res.status(400).json({ error: error.message });
+
+  }
+});
+
+module.exports = typeRoute;

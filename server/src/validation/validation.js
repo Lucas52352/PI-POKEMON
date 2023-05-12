@@ -1,14 +1,11 @@
 const validate = (req, res, next) => {
-    const { name, health, attack, defense, speed, height, weight, types } = req.body
+    const { name, HP, attack, armor, types = []} = req.body
 
     if(
         !name ||
-        !health ||
+        !HP ||
         !attack ||
-        !defense ||
-        !speed ||
-        !height ||
-        !weight ||
+        !armor ||
         !types
     ) {
         return res.status(400).json({ error: 'Incomplete data'})

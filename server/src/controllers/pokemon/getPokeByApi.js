@@ -1,29 +1,36 @@
 const axios = require('axios')
 
-const getPokeByApi = async (url = `https://pokeapi.com/api/v2/pokemon`) => {
-    const resultApi = await axios.get(url)
+const getPokeByApi = async (currentURL = `https://pokeapi.co/api/v2/pokemon/?limit=200`) => {
 
-    const nextApi = await axios.get(resultApi.data.next)
+    const resultApi = await axios.get(currentURL)
+
+    const nextApi = await axios.get(resultApi.data.next) 
 
     const allPokemons = [...resultApi.data.results, ...nextApi.data.results]
 
-    for(let pokemon of allPokemons) {
-        const url = await axios.get(pokemon.url)
-        delete pokemon.url
+    const pokemonData = [];
 
-        pokemon.id = url.data.id;
-        pokemon.height = url.data.height
-        pokemon.weight = url.data.weight
-        pokemon.HP = url.data.stats[0].base_stat
-        pokemon.attack = url.data.stats[1].base_stat
-        pokemon.defense = url.data.stats[2].base_stat
-        pokemon.speed = url.data.stats[5].base_stat
-        pokemon.types = url.data.types.type.name
-        pokemon.image = url.data.sprites['official-artwork'].front_shiny
-        pokemon.inDB = false
+    for (let pokemon of allPokemons) {
+             
+        const currentURL = await axios.get(pokemon.url)
+
+        const pokemonObj = {
+            id: currentURL.data.id,
+            name: currentURL.data.name,
+            height: currentURL.data.height,
+            weight: currentURL.data.weight,
+            HP: currentURL.data.stats[0].base_stat,
+            attack: currentURL.data.stats[1].base_stat,
+            armor: currentURL.data.stats[2].base_stat,
+            speed: currentURL.data.stats[5].base_stat,
+            image: currentURL.data.sprites.front_shiny,
+            inDB: false
+        };
+        
+        pokemonData.push(pokemonObj);
     }
 
-    return allPokemons
+    return pokemonData;      
 }
 
-module.exports = getPokeByApi
+module.exports = getPokeByApi;

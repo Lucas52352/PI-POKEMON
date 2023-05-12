@@ -7,11 +7,15 @@ const deleteMyPokemon = async (req, res) => {
     try {
         
         const toDelete = await deletePokemon(id)
-        return res.status(200).json(toDelete)
+        return res
+        .status(200)
+        .json(toDelete)
         
     } catch (error) {
         
-        return res.status(400).json({ error: error.message })
+        return res
+        .status(400)
+        .json({ error: error.message })
     }
 }
 

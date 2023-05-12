@@ -2,12 +2,11 @@ const createPokemon = require('../controllers/pokemon/createPoke')
 
 const createNewPokemon = async (req, res) => {
     const {
-        id,
         name,
         image,
         HP,
         attack,
-        defense,
+        armor,
         speed,
         height,
         weight,
@@ -16,12 +15,11 @@ const createNewPokemon = async (req, res) => {
 
     try {
         const newPokemon = await createPokemon(
-            id,
             name,
             image,
             HP,
             attack,
-            defense,
+            armor,
             speed,
             height,
             weight,
