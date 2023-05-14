@@ -1,0 +1,5 @@
+export const GET_ALL_POKEMONS = 'GET_ALL_POKEMONS'
+export const GET_DETAIL = 'GET_DETAIL'
+export const GET_TYPES = 'GET_TYPES'
+export const CREATE_POKEMON = 'CREATE_POKEMON'
+export const DELETE_POKEMON = 'DELETE_POKEMON'
