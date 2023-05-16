@@ -1,5 +1,5 @@
 const validate = (req, res, next) => {
-    const { name, HP, attack, armor, types = []} = req.body
+    const { name, HP, attack, armor, types} = req.body
 
     if(
         !name ||
