@@ -1,0 +1,22 @@
+.gif {
+    margin: 20px;
+}
+
+.landing {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.landingBtn {
+    transition: .5s;
+    background-color: rgb(254, 177, 149);
+    background-image: url(https://www.google.com/url?sa=i&url=https%3A%2F%2Fsp.depositphotos.com%2Fstock-photos%2Fpokebola.html&psig=AOvVaw2tUhtxqGv1c5reh9hc7UoQ&ust=1684279995098000&source=images&cd=vfe&ved=0CBEQjRxqFwoTCOio1Y2--P4CFQAAAAAdAAAAABAD);
+    border: none;
+}
+
+.landingBtn:hover {
+    background-color:#f76c6c;
+    background-image: url();
+}

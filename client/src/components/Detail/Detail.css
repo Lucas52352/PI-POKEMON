@@ -1,0 +1,12 @@
+.detailCard {
+    border: solid;
+    border-color: rgb(85, 66, 66);
+    width: 200px;
+    margin: 50px;
+    height: fit-content;
+    background-image: url(https://media.giphy.com/media/MyWrJJIdAfoJuEPlLP/giphy.gif)
+}
+
+.detailBtn {
+
+}

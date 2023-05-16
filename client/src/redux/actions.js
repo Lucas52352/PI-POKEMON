@@ -29,15 +29,17 @@ export const getAllPokemons = () => {
     }
 }
 
-export const getDetail = (name) => {
+export const getDetail = (id) => {
 
-    const endpoint = `http://localhost:3001/pokemon/search/${name}`
+    const endpoint = `http://localhost:3001/pokemon/${id}`
 
     return async (dispatch) => {
         try {
             const { data } = await axios.get(endpoint)
 
-            if(!data) throw new Error(`Parece que ${name} no quiere salir de su pokebola`)
+            console.log('data:', data);
+
+            if(!data) throw new Error(`Parece que no quiere salir de su pokebola`)
             return dispatch({
                 type: GET_DETAIL,
                 payload: data

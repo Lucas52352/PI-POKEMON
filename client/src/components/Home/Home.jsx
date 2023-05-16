@@ -1,9 +1,11 @@
-// import style from './home.module.css'
+import { useState } from "react"
+import Cards from "../Cards/Cards"
 
 const Home = () => {
-    return (
+
+    return (  
         <div>
-            <h1>Home Page</h1>
+            <Cards />
         </div>
     )
 }
