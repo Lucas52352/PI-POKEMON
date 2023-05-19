@@ -1,12 +1,57 @@
-.detailCard {
+.allCard {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
     border: solid;
     border-color: rgb(85, 66, 66);
-    width: 200px;
+    width: 18%;
     margin: 50px;
     height: fit-content;
-    background-image: url(https://media.giphy.com/media/MyWrJJIdAfoJuEPlLP/giphy.gif)
+    background-image: url(https://media.giphy.com/media/MyWrJJIdAfoJuEPlLP/giphy.gif);
+    background-size:100%;
+    background-repeat: repeat-y;
+    background-attachment: fixed;
+    align-self: center;
+    font-size: 18px;
 }
 
 .detailBtn {
+    margin: 25px;
+}
 
+.detail {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    margin: 15px;
+}
+
+.detailCard {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.detailCard2 {
+    display: flex;
+}
+
+.detailCard3 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cardItem {
+    display: flex;
+    padding: 5px;
 }

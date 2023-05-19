@@ -1,32 +1,52 @@
 import { useState } from "react";
+import { useDispatch } from 'react-redux'
+import './Searchbar.css'
+import { clearSearch, getByName } from "../../redux/actions";
 
-export default Searchbar = ( {onSearch} ) => {
-    let [name, setName] = useState('')
+const Searchbar = () => {
+
+    const [name, setName] = useState('');
+    const dispatch = useDispatch();
 
     const handleChange = (event) => {
-        setName(event.target.value)
-    }
+
+        setName(event.target.value);
+
+    };
+
+    const handleSearch = (event) => {
+
+        event.preventDefault()
+        dispatch(getByName(name))
+        dispatch(clearSearch())
+        setName('');
+    };
 
     return (
-        <div>
+        <div className="searchHandler">
 
-            <input 
+            <input
                 value={name}
-                type="search" 
-                placeholder="wich do you want?"
-                onChange={handleChange}
+                type="search"
+                className="input"
+                onChange={(event) => {
+                    handleChange(event)
+                }}
             />
 
             <button
+                type="submit"
                 className="searchButton"
-                onClick={() => {
-                    onSearch(name),
-                    setName('')
+                onClick={(event) => {
+                handleSearch(event);
                 }}
+                disabled={!name}
             >
-                Search
+                , I choose you!
             </button>
-
+            
         </div>
-    )
-}
+    );
+};
+
+export default Searchbar;

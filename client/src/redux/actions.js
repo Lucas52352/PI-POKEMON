@@ -4,7 +4,11 @@ import {
     GET_DETAIL,
     GET_TYPES,
     CREATE_POKEMON,
-    DELETE_POKEMON
+    DELETE_POKEMON,
+    NEXT_PAGE,
+    PREV_PAGE,
+    GET_BY_NAME,
+    CLEAN_SEARCH
 } from './action-types'
 
 export const getAllPokemons = () => {
@@ -14,6 +18,7 @@ export const getAllPokemons = () => {
         try {
 
             const { data } = await axios.get(endpoint)
+
             if(!data) throw new Error('Hubo un error al traer los pokemons')
 
             return dispatch({
@@ -37,7 +42,7 @@ export const getDetail = (id) => {
         try {
             const { data } = await axios.get(endpoint)
 
-            console.log('data:', data);
+            console.log('detail',data);
 
             if(!data) throw new Error(`Parece que no quiere salir de su pokebola`)
             return dispatch({
@@ -72,7 +77,7 @@ export const getTypes = () => {
     }
 }
 
-export const deletePokemon = () => {
+export const deletePokemon = (id) => {
 
     const endpoint = `http://localhost:3001/pokemon/delete/${id}`
 
@@ -92,22 +97,67 @@ export const deletePokemon = () => {
     }
 }
 
-export const createPokemon = () => {
+export const createPokemon = (pokemonData) => {
 
-    const endpoint = 'http://localhost:3001/pokemon/create'
+    const endpoint = 'http://localhost:3001/pokemon/create';
+  
+    return async (dispatch) => {
+
+      try {
+
+        const { data } = await axios.post(endpoint, pokemonData);
+        
+        return dispatch({
+
+          type: CREATE_POKEMON,
+          payload: data,
+
+        });
+
+      } catch (error) {
+
+        console.log('client:',error.response.data.errors);
+
+      }
+    }
+  }
+  
+
+export const nextPage = () => {
+    return {
+        type: NEXT_PAGE
+    }
+}
+
+export const prevPage = () => {
+    return {
+        type: PREV_PAGE
+    }
+}
+
+export const getByName = (name) => {
+
+    const endpoint = `http://localhost:3001/pokemon/search/${name}`
 
     return async (dispatch) => {
         try {
 
-            const { data } = await axios.post(endpoint)
+            const { data } = await axios.get(endpoint)
 
             return dispatch({
-                type: CREATE_POKEMON,
+                type: GET_BY_NAME,
                 payload: data
             })
             
         } catch (error) {
             console.log(error.message);
         }
+    }
+}
+
+export const clearSearch = () => {
+    return {
+        type: CLEAN_SEARCH,
+        payload: []
     }
 }

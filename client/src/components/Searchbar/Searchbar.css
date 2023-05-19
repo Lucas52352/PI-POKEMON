@@ -1,0 +1,42 @@
+.searchHandler{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent; 
+    height: 50px;
+}
+
+.searchButton {
+    background-color: transparent;
+    transition: .25s;
+
+}
+
+.searchButton:hover {
+    border: solid beige;
+}
+
+.input {
+    display: flex;
+    justify-content: center;
+    background-color: rgb(114, 255, 114);
+    transition: .4s;
+    width: 35px;
+    height: 35px;
+    border-radius: 100%;
+    font-size: 20px;
+    align-items: end;
+}   
+
+.input:focus {
+    width: 120px;
+    height: 30px;
+    border: none;
+    border-radius: 0%;
+    border-color: rgb(255, 255, 255);
+    border-bottom: 2px;
+}
+
+.input:hover {
+    cursor: pointer;
+}

@@ -5,6 +5,8 @@ import LandingPage from './components/Landing/Landing'
 import Home from './components/Home/Home'
 import Navbar from './components/Navbar/Navbar'
 import Detail from './components/Detail/Detail'
+import Search from './components/Search/Search'
+import Form from './components/Form/Form'
 
 function App() {
 
@@ -18,6 +20,8 @@ function App() {
       <Routes>
         <Route path='/' element={<LandingPage />} />
         <Route path='/home' element={<Home />} />
+        <Route path='/search' element={<Search />} />
+        <Route path='/create' element={<Form />}/>
         <Route path='/detail/:id' element={<Detail />} />
       </Routes>
       

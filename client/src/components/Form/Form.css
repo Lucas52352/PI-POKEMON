@@ -1,0 +1,52 @@
+.allForm {
+    display: flex;
+    justify-content: center;
+}
+
+.formA {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+    margin: 10px;
+}
+
+.formB {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+    margin: 10px;
+}
+
+.formInput {
+    margin: 15px;
+    height: 25px;
+
+    font-size: 20px;
+}
+
+.formTypes {
+    display: flex;
+    flex-direction: row;
+    
+}
+
+.selector {
+    display: flex;
+    margin: 18px;
+    height: 25px;
+    width: 140px;
+    font-size: 20px;
+}
+.formButton{ 
+    background-color: rgb(34, 253, 253);
+    border: none;
+}
+
+.formButton:hover {
+    cursor: pointer;
+
+}

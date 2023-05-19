@@ -1,15 +1,31 @@
 
 
 #root {
+  display: flex;
   max-width: 100%;
-  margin: 0 auto;
+  margin: 50px;
   padding: 2rem;
   text-align: center;
+  justify-content: center;
+  align-items: center;
 }
 
 
 body {
-  background-image: linear-gradient(#831010, rgb(255, 230, 0), rgb(147, 255, 125));
+  background-image: linear-gradient(#c436e8, rgb(255, 230, 1), rgb(74, 252, 184));
+  background-size:100%;
+  background-repeat: repeat-y;
+  background-repeat: repeat-x;
+  background-attachment: fixed;
+  height:100%;
+  width:100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-self: center;
+}
+
+.App {  
   background-size:100%;
   background-repeat: repeat-y;
   background-attachment: fixed;
@@ -17,12 +33,4 @@ body {
   width:100%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-}
-
-.header {
-  background-color: rgba(130, 130, 130, 0.512);
-  height: 160px;
-  width: 100%;
-
-}
+}  

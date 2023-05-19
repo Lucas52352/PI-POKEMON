@@ -3,7 +3,7 @@ import './Card.css'
 
 const Card = ({ id, name, image, types} ) => {
 
-const newName = name.charAt(0).toUpperCase() + name.slice(1)
+    const type = types?.join(' - ')
 
     return (
 
@@ -11,13 +11,13 @@ const newName = name.charAt(0).toUpperCase() + name.slice(1)
 
             <Link to={`/detail/${id}`}>
 
-                <div>
+                <div key={id}>
 
-                <h2>{newName}</h2>
+                <h2>{name}</h2>
 
-                <img src={image} alt={name} />
+                <img src={image} alt={name} className='cardImg' />
 
-                <h4>{types}</h4>
+                <h4>{type}</h4>
 
                 </div>
 
