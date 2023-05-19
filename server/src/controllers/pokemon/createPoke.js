@@ -9,7 +9,6 @@ const createPokemon = async (name, image, HP, attack, armor, speed, height, weig
   }
 
   const createdPokemon = await Pokemons.create({
-
     name: name,
     HP: HP,
     attack: attack,
@@ -17,9 +16,8 @@ const createPokemon = async (name, image, HP, attack, armor, speed, height, weig
     height: height,
     weight: weight,
     speed: speed,
-    image: image 
-    },
-  );
+    image: image,
+  });
 
   const typeInstances = await Types.findAll({
     where: { name: types },
@@ -29,7 +27,20 @@ const createPokemon = async (name, image, HP, attack, armor, speed, height, weig
 
   const tipo = typeInstances.map((elem) => elem.name);
 
-  return `Successfully created pokemon, with id: ${createdPokemon.id} and type: ${tipo}`;
+  return {
+    id: createdPokemon.id,
+    name: createdPokemon.name,
+    HP: createdPokemon.HP,
+    attack: createdPokemon.attack,
+    armor: createdPokemon.armor,
+    speed: createdPokemon.speed,
+    height: createdPokemon.height,
+    weight: createdPokemon.weight,
+    image: createdPokemon.image,
+    types: tipo 
+  }
 };
 
 module.exports = createPokemon;
+
+

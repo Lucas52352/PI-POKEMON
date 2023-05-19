@@ -1,6 +1,7 @@
 const axios = require('axios')
 
-const getPokeByApi = async (currentURL = `https://pokeapi.co/api/v2/pokemon/?limit=6`) => {
+const getPokeByApi = async (currentURL = `https://pokeapi.co/api/v2/pokemon/?limit=1`) => {
+    
 
     const resultApi = await axios.get(currentURL)
 
@@ -14,17 +15,23 @@ const getPokeByApi = async (currentURL = `https://pokeapi.co/api/v2/pokemon/?lim
              
         const currentURL = await axios.get(pokemon.url)
 
+        const data = currentURL.data
+
+        const types = data.types.map(type => type.type.name)
+
         const pokemonObj = {
-            id: currentURL.data.id,
-            name: currentURL.data.name,
-            height: currentURL.data.height,
-            weight: currentURL.data.weight,
-            HP: currentURL.data.stats[0].base_stat,
-            attack: currentURL.data.stats[1].base_stat,
-            armor: currentURL.data.stats[2].base_stat,
-            speed: currentURL.data.stats[5].base_stat,
-            image: currentURL.data.sprites.front_shiny,
+            id: data.id,
+            name: data.name,
+            height: data.height,
+            weight: data.weight,
+            HP: data.stats[0].base_stat,
+            attack: data.stats[1].base_stat,
+            armor: data.stats[2].base_stat,
+            speed: data.stats[5].base_stat,
+            types: types,
+            image: data.sprites.front_default,
             inDB: false
+            
         };
         
         pokemonData.push(pokemonObj);

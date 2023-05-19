@@ -6,7 +6,7 @@ const pokemonsByName = async (name) => {
 
     const pokemonName = allPokemons
 
-        .filter(pokemon => pokemon.name === name)
+        .find(pokemon => pokemon.name === name)
 
     return pokemonName
 

@@ -5,13 +5,20 @@ const getPokemonsDb = async () => {
         include: {
             model: Types,
             attributes: ['name'],
-            throught: {
-                types: [],
+            through: {
+                attributes: [],
             }
         }
     })
+
+    console.log(pokemonDb);
+
+    
     
     return (pokemonDb.map(pokemons => {
+
+        const types = pokemons.Types.map(type => type.name)
+
         return {
             id: pokemons.id,
             name: pokemons.name,
@@ -21,7 +28,7 @@ const getPokemonsDb = async () => {
             attack: pokemons.attack,
             armor: pokemons.armor,
             speed: pokemons.speed,
-            types: pokemons.types,
+            types: types,
             image: pokemons.image,
             inDB: pokemons.created
         }

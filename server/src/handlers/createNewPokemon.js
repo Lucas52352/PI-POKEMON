@@ -13,7 +13,11 @@ const createNewPokemon = async (req, res) => {
         types
     } = req.body
 
+
+
     try {
+
+
         const newPokemon = await createPokemon(
             name,
             image,
@@ -24,17 +28,12 @@ const createNewPokemon = async (req, res) => {
             height,
             weight,
             types
-        )
+        );
 
-        return res
-        .status(200)
-        .json(newPokemon)
-
+        return res.status(200).json(newPokemon);
     } catch (error) {
 
-        return res
-        .status(400)
-        .json({ error: error.message })
+        res.status(400).json(error)
     }
 }
 

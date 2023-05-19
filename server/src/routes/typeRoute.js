@@ -9,13 +9,17 @@ typeRoute.get('/', async (req, res) => {
     try {
         
         const typeApi = await axios.get('https://pokeapi.co/api/v2/type');
-        
-        
-    const types = typeApi.data.results.map(type => { return {
-        name: type.name
-    }});
 
-    await Types.bulkCreate(types);
+        const types = typeApi.data.results.map(type => type.name)
+
+
+    await types.forEach(data => {
+
+      console.log(data);
+      Types.findOrCreate({
+        where: { name: data}
+      })
+    });
     
     const allTypes = await Types.findAll();
 
