@@ -30,7 +30,7 @@ const getPokemonsDb = async () => {
             speed: pokemons.speed,
             types: types,
             image: pokemons.image,
-            inDB: pokemons.created
+            inDB: true
         }
     }))
 }

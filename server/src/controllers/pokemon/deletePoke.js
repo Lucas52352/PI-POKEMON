@@ -5,7 +5,7 @@ let deletePokemon = async (id) => {
         where: { id: id }
     })
 
-    if(!toBeDeleted) throw new Error('Pokemon not found')
+    if(!toBeDeleted) throw new Error('You can only delete pokemons created by users')
 
     await toBeDeleted.destroy()
     return `Pokemon ${toBeDeleted.name} successfully removed`;

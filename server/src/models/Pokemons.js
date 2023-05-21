@@ -15,6 +15,12 @@ module.exports = (sequelize) => {
     
         image: {
             type: DataTypes.STRING,
+            allowNull: false
+        },
+
+        attack: {
+            type: DataTypes.INTEGER,
+            allowNull:false
         },
     
         HP: {
@@ -24,7 +30,7 @@ module.exports = (sequelize) => {
     
         armor: {
             type: DataTypes.INTEGER,
-            allowNull: true
+            allowNull: false
         },
     
         speed: {

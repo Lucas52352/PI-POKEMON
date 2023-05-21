@@ -5,16 +5,17 @@ const pokemonsById = async (id, source) => {
     
     if(source === 'db') {
 
-        const pokemonDatabase = await Pokemons.findAll({
-            where: { id: id },
-            include: [
-                {
-                    model: Types,
-                    attributes: ['id', 'name'], // Incluye los atributos 'id' y 'name' del tipo
-                    through: { attributes: [] }, // Excluye los atributos de la tabla intermedia
-                },
-            ],
+        const pokemonDatabase = await Pokemons.findByPk(id, {
+            include: [{
+                model: Types,
+                attributes: ['id', 'name'], // Incluye los atributos 'id' y 'name' del tipo
+                through: { attributes: [] }, // Excluye los atributos de la tabla intermedia
+            }]
         });
+
+        console.log('getById:', pokemonDatabase);
+
+        const types = pokemonDatabase.Types.map(type => type.name)
         
 
         const pokemonDb = {
@@ -22,12 +23,13 @@ const pokemonsById = async (id, source) => {
             name: pokemonDatabase.name,
             height:pokemonDatabase.height,
             weight: pokemonDatabase.weight,
-            health: pokemonDatabase.health,
+            HP: pokemonDatabase.HP,
             attack: pokemonDatabase.attack,
             armor: pokemonDatabase.armor,
             speed: pokemonDatabase.speed,
             image: pokemonDatabase.image,
-            createdInDb: pokemonDatabase.created,
+            types: types,
+            inDb: pokemonDatabase.created,
         }
         return pokemonDb
     }
