@@ -44,9 +44,11 @@
 .formButton{ 
     background-color: rgb(34, 253, 253);
     border: none;
+    transition: .5s;
 }
 
 .formButton:hover {
     cursor: pointer;
-
+    background-color: rgb(28, 123, 255);
+    box-shadow: 10px;
 }

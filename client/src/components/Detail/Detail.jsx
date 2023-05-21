@@ -1,5 +1,5 @@
 import { useEffect } from "react"
-import { getDetail } from "../../redux/actions"
+import { getPokemonsById } from "../../redux/actions"
 import { useSelector, useDispatch } from "react-redux"
 import { Link, useParams } from "react-router-dom"
 import './Detail.css'
@@ -10,13 +10,13 @@ const Detail = () => {
     const detail = useSelector(store => store.detail)
     const { id } = useParams()
 
-    console.log(detail);
+    console.log('detail:', detail);
 
     const types = detail.types?.join(' - ')
 
     useEffect(() => {
 
-        dispatch(getDetail(id))
+        dispatch(getPokemonsById(id))
 
     }, [dispatch, id])
 

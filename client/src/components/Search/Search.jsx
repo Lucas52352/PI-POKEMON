@@ -7,31 +7,39 @@ const Search = () => {
 
     const pokemonSearch = useSelector((state) => state.pokemonByName)
 
-    const pokemonId = pokemonSearch.map(pokemon => pokemon.id)
 
     return (
         <div className="search">
+
                 <Searchbar />
 
                 <div className="eachCard">
-
             
-                        {
-                            pokemonSearch?.map(pokemon => {
-                                return (
-                                    <Link to={`/detail/${pokemonId}`}>
-                                        <div key={pokemonId}>
+                    {
+                        pokemonSearch?.map(pokemon => {
+
+                            return (
+
+                                <div>
+
+                                    <div key={pokemon.id}>
+
+                                        <Link to={`/detail/${pokemon.id}`}>
+
                                             <Card
-                                                id={pokemonId}
+                                                id={pokemon.id}
                                                 name={pokemon.name}
                                                 image={pokemon.image}
                                                 types={pokemon.types}
                                             />
-                                        </div>
-                                    </Link>
-                                )
-                            })
-                        }
+
+                                        </Link>
+                                    </div>
+
+                                </div>
+                            )
+                        })
+                    }
 
 
                 </div>

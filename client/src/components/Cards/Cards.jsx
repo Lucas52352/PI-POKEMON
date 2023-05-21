@@ -11,6 +11,8 @@ const Cards = () => {
     const allPokemons = useSelector((state) => state.allPokemons)
     const numPage = useSelector((state) => state.numPage)
 
+    console.log(allPokemons);
+
     let from = (numPage - 1) * 12
     let to = numPage * 12
 

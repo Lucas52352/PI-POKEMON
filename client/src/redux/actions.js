@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { 
     GET_ALL_POKEMONS,
-    GET_DETAIL,
+    GET_POKEMON_BY_ID,
     GET_TYPES,
     CREATE_POKEMON,
     DELETE_POKEMON,
@@ -29,12 +29,12 @@ export const getAllPokemons = () => {
         }
 
         catch (error) {
-            console.log(error.message);
+            console.log(error.response.data.error);
         }
     }
 }
 
-export const getDetail = (id) => {
+export const getPokemonsById = (id) => {
 
     const endpoint = `http://localhost:3001/pokemon/${id}`
 
@@ -42,17 +42,16 @@ export const getDetail = (id) => {
         try {
             const { data } = await axios.get(endpoint)
 
-            console.log('detail',data);
 
             if(!data) throw new Error(`Parece que no quiere salir de su pokebola`)
             return dispatch({
-                type: GET_DETAIL,
+                type: GET_POKEMON_BY_ID,
                 payload: data
             })
         }
 
         catch (error) {
-            console.log(error.message);
+            console.log(error.response.data);
         }
     }
 }
@@ -72,7 +71,7 @@ export const getTypes = () => {
             })
             
         } catch (error) {
-            console.log(error.message);
+            console.log(error.response.data);
         }
     }
 }
@@ -92,7 +91,7 @@ export const deletePokemon = (id) => {
             })
             
         } catch (error) {
-            console.log(error.message);
+            console.log(error.response.data);
         }
     }
 }
@@ -116,7 +115,7 @@ export const createPokemon = (pokemonData) => {
 
       } catch (error) {
 
-        console.log('client:',error.response.data.errors);
+        console.log('client:',error.response.data);
 
       }
     }
@@ -150,7 +149,7 @@ export const getByName = (name) => {
             })
             
         } catch (error) {
-            console.log(error.message);
+            console.log(error.response.data);
         }
     }
 }

@@ -216,7 +216,7 @@ const Form = () => {
                             {
                                 types.map(type => {
                                     return (
-                                        <option value={type.name}>{type.name}</option>
+                                        <option value={type.name} key={type.id}>{type.name}</option>
                                         )
                                 })
                             }

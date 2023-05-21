@@ -1,13 +1,13 @@
 import { 
     GET_ALL_POKEMONS,
-    GET_DETAIL,
     CREATE_POKEMON,
     DELETE_POKEMON,
     GET_TYPES,
     NEXT_PAGE,
     PREV_PAGE,
     GET_BY_NAME,
-    CLEAN_SEARCH
+    CLEAN_SEARCH,
+    GET_POKEMON_BY_ID
 } from './action-types'
 
 const initialState = {
@@ -27,7 +27,7 @@ const reducer = (state = initialState, {type, payload}) => {
                 allPokemons: payload,
             }
 
-        case GET_DETAIL:
+        case GET_POKEMON_BY_ID:
             return {
                 ...state,
                 detail: payload
@@ -54,13 +54,17 @@ const reducer = (state = initialState, {type, payload}) => {
         case CREATE_POKEMON:
             return {
                 ...state,
+                detail: payload,
                 allPokemons: [payload, ...state.allPokemons]
             }
 
         case DELETE_POKEMON:
+
+            const filtered = state.allPokemons.filter(pokemon => pokemon.id !== payload.id)
+
             return {
                 ...state,
-                allPokemons: payload
+                allPokemons: filtered
             }
 
         case NEXT_PAGE:
