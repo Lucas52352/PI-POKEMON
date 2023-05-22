@@ -12,3 +12,16 @@ export const NEXT_PAGE = 'NEXT_PAGE'
 export const PREV_PAGE = 'PREV_PAGE'
 
 export const CLEAN_SEARCH = 'CLEAN_SEARCH'
+
+export const FILTER_BY_TYPE = 'FILTER_BY_TYPE'
+export const FILTER_BY_SOURCE = 'FILTER_BY_SOURCE'
+
+export const ORDER_AZ = 'ORDER_AZ'
+export const ORDER_ZA = 'ORDER_ZA'
+
+export const ORDER_ATTACK_ASC = 'ORDER_ATTACK_ASC'
+export const ORDER_ATTACK_DESC = 'ORDER_ATTACK_DESC'
+
+
+// -  Botones/Opciones para **filtrar** por tipo, y por si su origen es de la API o de la base de datos (creados por nosotros desde el formulario).
+// -  Botones/Opciones para **ordenar** tanto ascendentemente como descendentemente los pokemones por orden alfabético y por ataque.

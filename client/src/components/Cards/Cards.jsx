@@ -1,64 +1,50 @@
-import { useEffect, useState } from "react";
 import Card from "../Card/Card";
-import { getAllPokemons } from "../../redux/actions";
-import { useSelector, useDispatch } from 'react-redux'
+import { useSelector } from 'react-redux'
 import './Cards.css'
 import Paginate from "../Pagination/Pagination";
 
 const Cards = () => {
-
-    const dispatch = useDispatch()
+    const numPage = useSelector((state) => state.numPage);
+    const filteredPokemons = useSelector((state) => state.filteredPokemons)
     const allPokemons = useSelector((state) => state.allPokemons)
-    const numPage = useSelector((state) => state.numPage)
 
-    console.log(allPokemons);
-
-    let from = (numPage - 1) * 12
-    let to = numPage * 12
-
-    let cantPages = allPokemons.length / 12
-
-    let viewPokemons = allPokemons?.slice(from, to)
-
-    useEffect(() => {
-        
-        dispatch(getAllPokemons())
-        
-    }, [dispatch])
-
-    return ( 
+    console.log('allPokemons:', allPokemons);
+    console.log('filtered:',filteredPokemons)
+  
+    let from = (numPage - 1) * 12;
+    let to = numPage * 12;
+  
+    let cantPages = filteredPokemons.length > 0 ? filteredPokemons.length / 12 : allPokemons.length / 12
+ 
+    let viewPokemons = filteredPokemons.length > 0 ? filteredPokemons.slice(from, to) : allPokemons.slice(from, to)
+  
+    return (
+      <div>
         <div>
-            
-            <div>
-                <Paginate cantPages={cantPages}/>
-            </div>
-
-            <div className="cardsContainer">
-
-                {viewPokemons?.map(pokemon => {
-                    return (
-                        <div key={pokemon.id}>
-                            
-                            <Card
-                                id={pokemon.id}
-                                name={pokemon.name}
-                                image={pokemon.image}
-                                types={pokemon.types}
-                                />
-
-                        </div>
-                    )
-                })}
-
-            </div>
-
-            <div>
-                <Paginate cantPages={cantPages}/>
-            </div>
-                
-
+          <Paginate cantPages={cantPages} />
         </div>
+  
+        <div className="cardsContainer">
+          {viewPokemons.map((pokemon) => {
+            return (
+              <div key={pokemon.id}>
+                <Card
+                  id={pokemon.id}
+                  name={pokemon.name}
+                  image={pokemon.image}
+                  types={pokemon.types}
+                />
+              </div>
+            );
+          })}
+        </div>
+  
+        <div>
+          <Paginate cantPages={cantPages} />
+        </div>
+      </div>
     )
-}
-
-export default Cards
+  }
+  
+  export default Cards;
+  

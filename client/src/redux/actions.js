@@ -8,7 +8,13 @@ import {
     NEXT_PAGE,
     PREV_PAGE,
     GET_BY_NAME,
-    CLEAN_SEARCH
+    CLEAN_SEARCH,
+    FILTER_BY_TYPE,
+    FILTER_BY_SOURCE,
+    ORDER_AZ,
+    ORDER_ZA,
+    ORDER_ATTACK_ASC,
+    ORDER_ATTACK_DESC
 } from './action-types'
 
 export const getAllPokemons = () => {
@@ -29,7 +35,7 @@ export const getAllPokemons = () => {
         }
 
         catch (error) {
-            console.log(error.response.data.error);
+            console.log(error.message);
         }
     }
 }
@@ -71,7 +77,7 @@ export const getTypes = () => {
             })
             
         } catch (error) {
-            console.log(error.response.data);
+            console.log(error.response);
         }
     }
 }
@@ -139,6 +145,7 @@ export const getByName = (name) => {
     const endpoint = `http://localhost:3001/pokemon/search/${name}`
 
     return async (dispatch) => {
+
         try {
 
             const { data } = await axios.get(endpoint)
@@ -155,8 +162,52 @@ export const getByName = (name) => {
 }
 
 export const clearSearch = () => {
+
     return {
+
         type: CLEAN_SEARCH,
         payload: []
+
+    }
+}
+
+export const filterByType = (type) => {
+
+    return {
+        type: FILTER_BY_TYPE,
+        payload: type
+    }
+}
+
+export const filterBySource = (source) => {
+
+    return {
+        type: FILTER_BY_SOURCE,
+        payload: source
+    }
+}
+
+export const orderAsc = () => {
+    
+    return {
+        type: ORDER_AZ,
+    }
+}
+
+export const orderDesc = () => {
+    return {
+        type: ORDER_ZA
+    }
+}
+
+export const orderAttackAsc = () => {
+    return {
+        type: ORDER_ATTACK_ASC
+    }
+}
+
+export const orderAttackDesc = () => {
+    return {
+        type: ORDER_ATTACK_DESC
     }
 }
