@@ -14,8 +14,6 @@ typeRoute.get('/', async (req, res) => {
 
 
     await types.forEach(data => {
-
-      console.log(data);
       Types.findOrCreate({
         where: { name: data}
       })

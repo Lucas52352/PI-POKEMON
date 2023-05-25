@@ -1,17 +1,15 @@
 const axios = require('axios')
 
-const getPokeByApi = async (currentURL = `https://pokeapi.co/api/v2/pokemon/?limit=400`) => {
+const getPokeByApi = async (currentURL = `https://pokeapi.co/api/v2/pokemon/?limit=90`) => {
     
 
     const resultApi = await axios.get(currentURL)
 
-    const nextApi = await axios.get(resultApi.data.next) 
-
-    const allPokemons = [...resultApi.data.results, ...nextApi.data.results]
+    console.log(resultApi.data.results);
 
     const pokemonData = [];
 
-    for (let pokemon of allPokemons) {
+    for (let pokemon of resultApi.data.results) {
              
         const currentURL = await axios.get(pokemon.url)
 

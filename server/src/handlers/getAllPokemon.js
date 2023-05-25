@@ -1,20 +1,7 @@
 const getAllPoke = require('../controllers/pokemon/getAllPoke')
-const getPokeByName = require('../controllers/pokemon/getPokeByName')
-const getPokeById = require('../controllers/pokemon/getPokeById')
 
-const getAllPokemons = async (req, res) => {
-    let { name } = req.query
 
-    if(name) {
-        let pokemonName = await getPokeByName() || getPokeById()
-
-        if(pokemonName.error) {
-            throw new Error(pokemonName.error)
-        } else {
-            returnres.status(200).json(pokemonName)
-        }
-    }   
-    else {
+const getAllPokemons = async (req, res) => {{
 
             try {
 
