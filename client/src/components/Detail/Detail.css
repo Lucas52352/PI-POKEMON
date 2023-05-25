@@ -16,11 +16,22 @@
     font-size: 18px;
 }
 
-.detailBtn {
-    margin: 25px;
+.eachBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    margin: 20px;
+    background-color: rgb(162, 255, 255);
+    padding: 10px;
+    transition: .5s;
 }
 
-.detail {
+.eachBtn:hover {
+     background-color: aqua;
+}
+
+.allDetail {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -28,10 +39,10 @@
 }
 
 .buttons {
-    display: flex;
-    justify-content: center;
-    align-content: center;
     margin: 15px;
+    display: flex;
+    margin: 20px;
+   
 }
 
 .detailCard {
@@ -54,4 +65,9 @@
 .cardItem {
     display: flex;
     padding: 5px;
+}
+
+.cardImg {
+    height: 100px;
+    width: 100px;
 }

@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@600&family=Dhurjati&family=DotGothic16&family=Geo&family=Joti+One&family=Orbitron&display=swap');
+
 .cardContainer {
     border: solid;
     padding: 18px;
@@ -5,13 +7,14 @@
     height: 350px;
     width: 170px;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     background-color: rgb(180, 255, 255);
-    border-radius: 10%;
+    border-radius: 20px;
     transition: .4s;
     font-size: 19px;
-    flex-direction: column;
+    align-self: center;
 }
 
 .cardContainer:hover {
@@ -26,15 +29,56 @@
 
 .closeBtn {
     display: flex;
-    align-self: baseline;
+    align-self:flex-end;
     background-color: red;
-    height: 40px;
-    width: 40px;
-    border-radius: 100%;
+    height: 20px;
+    width: 20px;
+    border-radius: 20px;
     justify-content: center;
     align-items: center;
+    margin-left: 40px;
+    transition: .4s;
 }
 
 .closeBtn:hover {
     background-color: rgb(255, 24, 109);
+}
+
+.name {
+    font-family: 'Dhurjati', sans-serif;
+}
+
+.dataCard {
+    font-family: 'Geo', sans-serif;
+    font-size: 22px;
+}
+
+.eachCard {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.cardButtons {
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+}
+
+.updateBtn {
+    display: flex;
+    align-self:center;
+    background-color: rgb(119, 255, 0);
+    height: 20px;
+    width: 20px;
+    border-radius: 20px;
+    justify-content: center;
+    align-items: center;
+    transition: .4s;
+    margin-right: 40px
+}
+
+.updateBtn:hover {
+    background-color: rgb(24, 255, 139);
 }

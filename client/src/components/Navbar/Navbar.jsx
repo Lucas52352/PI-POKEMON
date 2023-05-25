@@ -1,10 +1,16 @@
 import { Link } from "react-router-dom"
+import img from '../../Images/pokemon.png'
 import './Navbar.css'
-import Searchbar from "../Searchbar/Searchbar"
+
 
 const Navbar = () => {
     return (
         <header className="navBar">
+
+            <div className="navHead">
+                <h1 className="title">YOUR POKEDEX</h1>
+                <img className="navImg" src={img} alt="pokemon" />
+            </div>
 
             <Link to='/home' >
                 <button className="btn">Home</button>
@@ -13,6 +19,7 @@ const Navbar = () => {
             <Link to='/create' >
                 <button className="btn">Create your pokemon</button>
             </Link>
+
 
             <Link to='/search'>
                 <button className="btn">Search</button>

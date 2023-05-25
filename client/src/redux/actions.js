@@ -7,6 +7,7 @@ import {
     DELETE_POKEMON,
     NEXT_PAGE,
     PREV_PAGE,
+    RESET_PAGE,
     GET_BY_NAME,
     CLEAN_SEARCH,
     FILTER_BY_TYPE,
@@ -48,6 +49,9 @@ export const getPokemonsById = (id) => {
         try {
             const { data } = await axios.get(endpoint)
 
+            console.log(data);
+            console.log(endpoint);
+
 
             if(!data) throw new Error(`Parece que no quiere salir de su pokebola`)
             return dispatch({
@@ -57,7 +61,7 @@ export const getPokemonsById = (id) => {
         }
 
         catch (error) {
-            console.log(error.response.data);
+            console.log(error.response);
         }
     }
 }
@@ -97,7 +101,7 @@ export const deletePokemon = (id) => {
             })
             
         } catch (error) {
-            console.log(error.response.data);
+            console.log(error.message);
         }
     }
 }
@@ -121,7 +125,7 @@ export const createPokemon = (pokemonData) => {
 
       } catch (error) {
 
-        console.log('client:',error.response.data);
+        console.log('client:',error.response);
 
       }
     }
@@ -140,6 +144,13 @@ export const prevPage = () => {
     }
 }
 
+export const resetPage = () => {
+    return {
+        type: RESET_PAGE
+    }
+}
+
+
 export const getByName = (name) => {
 
     const endpoint = `http://localhost:3001/pokemon/search/${name}`
@@ -156,7 +167,7 @@ export const getByName = (name) => {
             })
             
         } catch (error) {
-            console.log(error.response.data);
+            alert('Pokemon not found')
         }
     }
 }

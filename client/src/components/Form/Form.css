@@ -1,6 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@600&family=Dhurjati&family=DotGothic16&family=Geo&family=Joti+One&family=Orbitron&display=swap');
+
 .allForm {
     display: flex;
     justify-content: center;
+    font-family: 'Orbitron', sans-serif;
+    font-weight:bolder;
+    align-items: center;
+}
+
+.formData {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
 }
 
 .formA {
@@ -10,6 +22,7 @@
     flex-direction: column;
     flex-wrap: wrap;
     margin: 10px;
+    background-color: rgba(150, 150, 150, 0.486);
 }
 
 .formB {
@@ -19,6 +32,7 @@
     flex-direction: column;
     flex-wrap: wrap;
     margin: 10px;
+    background-color: rgba(150, 150, 150, 0.486);
 }
 
 .formInput {
@@ -31,7 +45,8 @@
 .formTypes {
     display: flex;
     flex-direction: row;
-    
+    background-color: rgba(150, 150, 150, 0.486);
+    font-family: 'Orbitron', sans-serif;
 }
 
 .selector {

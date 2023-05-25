@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { deletePokemon } from '../../redux/actions'
+import { deletePokemon, getAllPokemons } from '../../redux/actions'
 import { useDispatch } from 'react-redux'
 import './Card.css'
 
@@ -9,10 +9,11 @@ const Card = ({ id, name, image, types} ) => {
     const type = types?.join(' - ')
 
         
-    const onClick = (event) => {
+    const onDelete = (event) => {
 
         event.preventDefault()
         dispatch(deletePokemon(id))
+        dispatch(getAllPokemons())
 
     }
 
@@ -20,16 +21,21 @@ const Card = ({ id, name, image, types} ) => {
 
         <div className='cardContainer'>
 
-            <button onClick={onClick} className='closeBtn'> X </button>
+            <div className='cardButtons'>
+
+            <button className='updateBtn'> ✎ </button>
+            <button onClick={onDelete} className='closeBtn'> X </button>
+
+            </div>
                 <Link to={`/detail/${id}`}>
 
-                    <div key={id}>
+                    <div className='eachCard' key={id}>
 
-                    <h2>{name}</h2>
+                    <h2 className='name'>{name}</h2>
 
                     <img src={image} alt={name} className='cardImg' />
 
-                    <h4>{type}</h4>
+                    <h4 className='dataCard'>{type}</h4>
 
                     </div>
 

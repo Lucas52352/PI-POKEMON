@@ -23,8 +23,10 @@ const Form = () => {
         types: [],
       })
 
-      const [errors, setErrors] = useState({});
+    const [errors, setErrors] = useState({});
+    const [success, setSuccess] = useState(null)
 
+    const hasErrors = Object.keys(errors).length > 0
       
     const handleChange = (event) => {
 
@@ -38,6 +40,20 @@ const Form = () => {
             [event.target.name]: event.target.value
         }))
     }
+
+    const clearForm = () => {
+        setFormData({
+            name: "",
+            HP: 0,
+            armor: 0,
+            attack: 0,
+            height: 0,
+            weight: 0,
+            speed: 0,
+            image: "",
+            types: []
+        })
+    }
       
 
     useEffect(() => {
@@ -46,23 +62,37 @@ const Form = () => {
 
     }, [dispatch])
 
+    const handleSuccess = () => {
+        setSuccess('Pokemon created successfully!')
+        clearForm()
+    }
+
     const onPost = (event) => {
-        event.preventDefault('')
+        event.preventDefault()
+
+        if(formData.name === '' || formData.HP === 0 || formData.armor === 0 || formData.image === '' || formData.attack === 0 || formData.types.length === 0){
+            return alert ('Please, complete the empty fields')
+        }
+
         dispatch(createPokemon(formData))
+        handleSuccess()
     }
 
     return (
 
-        <div>
-            <h2>Create your pokemon:</h2>
+        <div className="formData">
 
+            <div className="titleForm">
+                <h2>Create your pokemon:</h2>
+            </div>
+                <p>inputs with * are mandatory</p>
             <div className="allForm">
             
                 <div className="formA">
 
                     {/* NAME */}
 
-                    <label htmlFor="name">Name:</label>
+                    <label htmlFor="name">Name: *</label>
                     <input 
                         className="formInput" 
                         type="text" 
@@ -75,7 +105,7 @@ const Form = () => {
 
                     {/* HEALTH */}
 
-                    <label htmlFor="HP">HP:</label>
+                    <label htmlFor="HP">HP: *</label>
                     <input 
                         className="formInput" 
                         type="number" 
@@ -89,7 +119,7 @@ const Form = () => {
 
                     {/* ARMOR */}
 
-                    <label htmlFor="armor">Armor:</label>
+                    <label htmlFor="armor">Armor: *</label>
                     <input 
                         className="formInput" 
                         type="number" 
@@ -103,7 +133,7 @@ const Form = () => {
 
                     {/* ATTACK */}
 
-                    <label htmlFor="attack">Attack:</label>
+                    <label htmlFor="attack">Attack: *</label>
                     <input 
                         className="formInput" 
                         type="number" 
@@ -163,12 +193,12 @@ const Form = () => {
 
                     {/* IMAGE */}
 
-                    <label htmlFor="image">Image:</label>
+                    <label htmlFor="image">Image: *</label>
                     <input 
                         className="formInput" 
                         type="url" 
                         name="image" 
-                        placeholder="URL-Image" 
+                        placeholder="select your file" 
                         onChange={handleChange}
                         value={formData.image}
                     />                    
@@ -177,7 +207,11 @@ const Form = () => {
 
                     {/* TYPES */}
 
-                    <label htmlFor="types">Types:</label>
+
+                    </div>
+
+                </div>
+                    <label htmlFor="types">Types: * </label>
 
                     <div className="formTypes">
 
@@ -192,6 +226,9 @@ const Form = () => {
                                 })
                             }}
                         >
+
+                            <option value=""> - </option>
+
                             {
                                 types.map(type => {
                                     return (
@@ -213,6 +250,9 @@ const Form = () => {
                                 })
                             }}
                         >
+
+                            <option value=""> - </option>
+
                             {
                                 types.map(type => {
                                     return (
@@ -225,13 +265,11 @@ const Form = () => {
 
                         {errors.types && <p style={{color: 'red'}}>{errors.types}</p>}
 
-                    </div>
-
-                </div>
-
             </div>
 
-            <button className="formButton" onClick={onPost}>Create</button>
+
+            {success !== null && <p style={{ color: 'green'}}>{success}</p>}
+            <button className="formButton" onClick={onPost} disabled={hasErrors}>Create</button>
 
         </div>
     )

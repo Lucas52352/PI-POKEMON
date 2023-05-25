@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@600&family=Dhurjati&family=DotGothic16&family=Geo&family=Joti+One&family=Orbitron&display=swap');
+
 .gif {
     margin: 20px;
 }
@@ -11,11 +13,20 @@
 
 .landingBtn {
     transition: .5s;
-    background-color: rgb(254, 177, 149);
+    background-color: rgb(173, 255, 255);
     border: none;
 }
 
 .landingBtn:hover {
-    background-color:#f76c6c;
-    background-image: url(https://www.google.com/url?sa=i&url=https%3A%2F%2Fsp.depositphotos.com%2Fstock-photos%2Fpokebola.html&psig=AOvVaw2tUhtxqGv1c5reh9hc7UoQ&ust=1684279995098000&source=images&cd=vfe&ved=0CBEQjRxqFwoTCOio1Y2--P4CFQAAAAAdAAAAABAD);
+    background-color: aqua
+
+}
+
+.titleLanding {
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    margin-top: 10%;
+    font-family: 'Joti One', cursive;
 }

@@ -1,16 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@600&family=DotGothic16&family=Geo&family=Joti+One&family=Orbitron&display=swap');
+
 .navBar {
     background-color: rgba(246, 238, 128, 0.801);
     display: flex;
     justify-content: space-around;
     align-items: center;
-    height: 120px;
+    height: 175px;
     width:100vw;
     align-self: center;
     transition: .8s;
-    margin: 15px;
 }
-
-
 
 .btn {
     background-color: rgb(180, 255, 255);
@@ -20,4 +19,32 @@
     flex-direction: column;
     align-items: center;
     width: fit-content;
+    font-size: 28px;
+    font-family: 'Geo', sans-serif;
+    transition: .5s;
+}
+
+.btn:hover {
+    background-color: aqua;
+}
+
+.title {
+    display: flex;
+    font-family: 'Joti One', cursive;
+    align-items: center;
+    justify-content: center;
+}
+
+.navImg {
+    height: 60px;
+    width: 120px;
+    margin: -19px;
+}
+
+.navHead {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: -50px;
 }

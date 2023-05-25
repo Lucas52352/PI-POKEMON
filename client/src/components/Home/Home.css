@@ -1,0 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@600&family=DotGothic16&family=Geo&family=Joti+One&family=Orbitron&display=swap');
+
+.homeBody {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.label {
+    font-family: 'Geo', sans-serif;
+    font-size: 25px;
+    color: black;
+}
+
+.homeOption {
+    font-family: 'Orbitron', sans-serif;
+    border: solid black
+}
+
+.filter {
+    display: flex;
+    margin: 15px;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    height: fit-content;
+    width: 100px;
+    font-family: 'Geo', sans-serif;
+    font-size: 25px;
+}
+
+.sorter {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    border-radius: 20px;
+    background-color: rgb(255, 233, 168);
+    margin: 5px;
+}

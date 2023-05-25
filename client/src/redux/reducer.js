@@ -13,7 +13,8 @@ import {
     ORDER_AZ,
     ORDER_ZA,
     ORDER_ATTACK_ASC,
-    ORDER_ATTACK_DESC
+    ORDER_ATTACK_DESC,
+    RESET_PAGE
 } from './action-types'
 
 const initialState = {
@@ -32,6 +33,7 @@ const reducer = (state = initialState, {type, payload}) => {
             return {
                 ...state,
                 allPokemons: payload,
+                filteredPokemons: payload
             }
 
         case GET_POKEMON_BY_ID:
@@ -68,6 +70,8 @@ const reducer = (state = initialState, {type, payload}) => {
         case DELETE_POKEMON:
 
             const filtered = state.allPokemons.filter(pokemon => pokemon.id !== payload.id)
+            console.log('filtered:',filtered, 
+            'state:', ...state);
 
             return {
                 ...state,
@@ -86,22 +90,26 @@ const reducer = (state = initialState, {type, payload}) => {
                 numPage: state.numPage - 1
             }
 
-            case FILTER_BY_TYPE:
+        case RESET_PAGE:
+            return {
+                ...state,
+                numPage: 1
+            }
 
-                const filterByType = state.allPokemons.filter((pokemon) => {
+        case FILTER_BY_TYPE:
 
-                  const pokemonTypes = pokemon.types.map((type) => type)
+            const filterByType = state.allPokemons.filter((pokemon) => {
 
-                  console.log('pokemonTypes: ',pokemonTypes[0], pokemonTypes[1]);
+                const pokemonTypes = pokemon.types.map((type) => type)
 
-                  return pokemonTypes.includes(payload)
+                return pokemonTypes.includes(payload)
 
-                })
-              
-                return {
-                  ...state,
-                  filteredPokemons: filterByType,
-              }
+            })
+            
+            return {
+                ...state,
+                filteredPokemons: filterByType,
+            }
               
 
         case FILTER_BY_SOURCE:
@@ -128,7 +136,7 @@ const reducer = (state = initialState, {type, payload}) => {
 
         case ORDER_AZ:
 
-            const orderAsc = [...state.allPokemons].sort((a, b) => {
+            const orderAsc = [...state.filteredPokemons].sort((a, b) => {
                 if(a.name < b.name) return -1
                 if(a.name > b.name) return 1
                 return 0
@@ -141,7 +149,7 @@ const reducer = (state = initialState, {type, payload}) => {
             }
 
         case ORDER_ZA:
-            const orderDesc = [...state.allPokemons].sort((a, b) => {
+            const orderDesc = [...state.filteredPokemons].sort((a, b) => {
                 if(a.name > b.name) return -1
                 if(a.name < b.name) return 1
                 return 0
@@ -152,7 +160,7 @@ const reducer = (state = initialState, {type, payload}) => {
             }
 
         case ORDER_ATTACK_ASC:
-            const orderAttackAsc = [...state.allPokemons].sort((a, b) => {
+            const orderAttackAsc = [...state.filteredPokemons].sort((a, b) => {
                 return a.attack - b.attack
             })
             
@@ -162,7 +170,7 @@ const reducer = (state = initialState, {type, payload}) => {
             }
             
         case ORDER_ATTACK_DESC:
-            const orderAttackDesc = [...state.allPokemons].sort((a, b) => {
+            const orderAttackDesc = [...state.filteredPokemons].sort((a, b) => {
                 return b.attack - a.attack
             })
             

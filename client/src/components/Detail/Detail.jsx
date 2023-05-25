@@ -10,8 +10,6 @@ const Detail = () => {
     const detail = useSelector(store => store.detail)
     const { id } = useParams()
 
-    console.log('detail:', detail);
-
     const types = detail.types?.join(' - ')
 
     useEffect(() => {
@@ -21,17 +19,22 @@ const Detail = () => {
     }, [dispatch, id])
 
     return (
-        <div className="detail">
+        <div className="allDetail">
         
             <div className="buttons">
 
-                <Link to='/home'>   
-                    <button className="detailBtn"> ⤌ Go Home</button>
-                </Link>
+                <div className="detailBtn">
+                    <Link to='/home'>   
+                        <button className="eachBtn"> ⤌ Go Home</button>
+                    </Link>
+                </div>
 
-                <Link to='/search'>
-                    <button className="detailBtn">  Go Search ⤍ </button>
-                </Link>
+                <div className="detailBtn">
+                    <Link to='/search'>
+                        <button className="eachBtn">  Go Search ⤍ </button>
+                    </Link>
+                </div>
+
 
             </div>
 
@@ -40,8 +43,9 @@ const Detail = () => {
 
                 <div className="detailCard">
 
+
                     <h2 className="cardItem">{detail.name}</h2>
-                    <img className="cardItem" src={detail.image} alt={detail.name} />
+                    <img className="cardImg" src={detail.image} alt={detail.name} />
                   
 
                 </div>
