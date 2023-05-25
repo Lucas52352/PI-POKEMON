@@ -2,8 +2,9 @@ import { useSelector, useDispatch } from "react-redux";
 import { useParams } from 'react-router-dom'
 import { getTypes, getPokemonsById } from "../../redux/actions";
 import './Edit.css'
-import { useEffect, useState } from "react"
+import { useEffect, useState, useMemo } from "react"
 import { updatePokemon} from "../../redux/actions";
+import { Link } from "react-router-dom";
 
 const Edit = () => {
 
@@ -12,8 +13,6 @@ const Edit = () => {
 
     const types = useSelector((state) => state.allTypes)
     const detail = useSelector((state) => state.detail)
-
-    console.log(detail);
 
     const [updateData, setUpdateData] = useState({
         name: "",
@@ -29,6 +28,13 @@ const Edit = () => {
 
     const [success, setSuccess] = useState(null)
 
+    const enabled = useMemo(() => {
+        return (
+            updateData?.types?.some(type => type)
+        )
+
+    }, [updateData.types])
+
     const handleChange = (event) => {
 
         setUpdateData({
@@ -41,18 +47,19 @@ const Edit = () => {
 
         dispatch(getTypes())
         dispatch(getPokemonsById(id))
+
         setUpdateData(detail)
 
     }, [dispatch])
 
     const handleSuccess = () => {
         setSuccess('Pokemon updated successfully!')
-        clearForm()
     }
 
     const onUpdate = (event) => {
         event.preventDefault()
-        dispatch(updatePokemon(updateData))
+        dispatch(updatePokemon(id, updateData))
+        dispatch(getPokemonsById(id))
         handleSuccess()
     }
 
@@ -61,7 +68,7 @@ const Edit = () => {
         <div className="updateData">
 
             <div className="titleForm">
-                <h2>Update {updateData.name}</h2>
+                <h2>Update {detail.name}</h2>
             </div>
 
             <div className="allForm">
@@ -188,11 +195,11 @@ const Edit = () => {
                         <select 
                             name="types" 
                             className="selector"
-                            value={updateData.types[0]}
+                            value={updateData?.types?.[0] || null}
                             onChange={(event) => {
                                 setUpdateData({
                                     ...updateData,
-                                    types: [event.target.value, updateData.types[1]]
+                                    types: [event.target.value, updateData?.types?.[1]]
                                 })
                             }}
                         >
@@ -202,7 +209,7 @@ const Edit = () => {
                             {
                                 types.map(type => {
                                     return (
-                                        <option value={type.name} key={type.id}>{type.name}</option>
+                                        <option value={type.id} key={type.id}>{type.name}</option>
                                     )
                                 })
                             }
@@ -212,11 +219,11 @@ const Edit = () => {
                         <select 
                             name="types" 
                             className="selector"
-                            value={updateData.types[1]}
+                            value={updateData?.types?.[1] || null}
                             onChange={(event) => {
                                 setUpdateData({
                                     ...updateData,
-                                    types: [updateData.types[0], event.target.value]
+                                    types: [updateData?.types?.[0], event.target.value]
                                 })
                             }}
                         >
@@ -226,7 +233,7 @@ const Edit = () => {
                             {
                                 types.map(type => {
                                     return (
-                                        <option value={type.name} key={type.id}>{type.name}</option>
+                                        <option value={type.id} key={type.id}>"{type.name}"</option>
                                         )
                                 })
                             }
@@ -238,7 +245,10 @@ const Edit = () => {
 
 
             {success !== null && <p style={{ color: 'green'}}>{success}</p>}
-            <button className="formButton" onClick={onUpdate}>Create</button>
+
+            <Link to='/home'>
+                <button className="formButton" onClick={onUpdate} disabled={!enabled} >Update</button>
+            </Link>
 
         </div>
     )

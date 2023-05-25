@@ -115,13 +115,13 @@ export const createPokemon = (pokemonData) => {
     }
 }
 
-export const updatePokemon = (id, pokemonData) => {
+export const updatePokemon = (id, updateData) => {
     const endpoint = `http://localhost:3001/pokemon/update/${id}`
 
+    console.log('pokemonData:', updateData, 'id:', id)
     return async(dispatch) => {
         try {
-            const { data } = await axios.put(endpoint, pokemonData)
-            console.log(data)
+            const { data } = await axios.put(endpoint, updateData)
 
             return dispatch({
                 type: UPDATE_POKEMON,

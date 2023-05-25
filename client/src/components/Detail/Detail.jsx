@@ -10,8 +10,6 @@ const Detail = () => {
     const detail = useSelector(store => store.detail)
     const { id } = useParams()
 
-    console.log(detail);
-
     const types = detail.types?.join(' - ')
 
     useEffect(() => {

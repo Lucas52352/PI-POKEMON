@@ -139,11 +139,11 @@ const reducer = (state = initialState, {type, payload}) => {
 
                 if (payload === 'api') {
 
-                return pokemon.inDB === false
+                return pokemon.createdInDB === false
 
                 } else if (payload === 'db') {
 
-                return pokemon.inDB === true
+                return pokemon.createdInDB === true
 
                 }
 

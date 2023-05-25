@@ -67,3 +67,8 @@
     background-color: rgb(28, 123, 255);
     box-shadow: 10px;
 }
+
+.formButton:disabled {
+    background-color: gray;
+    color: black;
+}

@@ -8,8 +8,6 @@ const Cards = () => {
   const filteredPokemons = useSelector((state) => state.filteredPokemons)
   const allPokemons = useSelector((state) => state.allPokemons)
 
-  console.log(allPokemons);
-
   let from = (numPage - 1) * 12;
   let to = numPage * 12;
 
