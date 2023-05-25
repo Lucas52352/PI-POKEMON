@@ -8,7 +8,7 @@ const getById = async (req, res) => {
 
         const pokemonId = await getPokemonsById(id, source)
 
-        if(pokemonId.error) throw new Error(pokemonId.error)
+        if(pokemonId.error) throw new Error('No existe un pokemon con ese id')
 
         return res
         .status(200)

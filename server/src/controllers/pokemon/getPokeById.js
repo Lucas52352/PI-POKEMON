@@ -49,7 +49,7 @@ const pokemonsById = async (id, source) => {
             armor: pokemon.stats[2].base_stat,
             speed: pokemon.stats[5].base_stat,
             types: pokemon.types.map((el) => el.type.name),
-            image: pokemon.sprites.front_default,
+            image: pokemon.sprites.other['official-artwork'].front_default,
             createdInDb: false,
         }
         return pkmnApi

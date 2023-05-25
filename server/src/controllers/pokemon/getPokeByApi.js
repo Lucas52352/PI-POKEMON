@@ -1,6 +1,6 @@
 const axios = require('axios')
 
-const getPokeByApi = async (currentURL = `https://pokeapi.co/api/v2/pokemon/?limit=60`) => {
+const getPokeByApi = async (currentURL = `https://pokeapi.co/api/v2/pokemon/?limit=400`) => {
     
 
     const resultApi = await axios.get(currentURL)
@@ -29,7 +29,7 @@ const getPokeByApi = async (currentURL = `https://pokeapi.co/api/v2/pokemon/?lim
             armor: data.stats[2].base_stat,
             speed: data.stats[5].base_stat,
             types: types,
-            image: data.sprites.front_default,
+            image: data.sprites.other['official-artwork'].front_default,
             inDB: false
             
         };
