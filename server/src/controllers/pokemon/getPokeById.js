@@ -13,8 +13,6 @@ const pokemonsById = async (id, source) => {
             }]
         });
 
-        console.log('getById:', pokemonDatabase);
-
         const types = pokemonDatabase.Types.map(type => type.name)
         
 
@@ -29,7 +27,7 @@ const pokemonsById = async (id, source) => {
             speed: pokemonDatabase.speed,
             image: pokemonDatabase.image,
             types: types,
-            inDb: pokemonDatabase.created,
+            createdInDB: true,
         }
         return pokemonDb
     }
@@ -50,7 +48,7 @@ const pokemonsById = async (id, source) => {
             speed: pokemon.stats[5].base_stat,
             types: pokemon.types.map((el) => el.type.name),
             image: pokemon.sprites.other['official-artwork'].front_default,
-            createdInDb: false,
+            createdInDB: false,
         }
         return pkmnApi
     }

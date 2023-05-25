@@ -10,10 +10,6 @@ const getPokemonsDb = async () => {
             }
         }
     })
-
-    console.log(pokemonDb);
-
-    
     
     return (pokemonDb.map(pokemons => {
 
@@ -30,7 +26,7 @@ const getPokemonsDb = async () => {
             speed: pokemons.speed,
             types: types,
             image: pokemons.image,
-            inDB: true
+            createdInDB: true
         }
     }))
 }
