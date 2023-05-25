@@ -14,7 +14,9 @@ import {
     ORDER_ZA,
     ORDER_ATTACK_ASC,
     ORDER_ATTACK_DESC,
-    RESET_PAGE
+    RESET_PAGE,
+    CLEAN_DETAIL,
+    UPDATE_POKEMON
 } from './action-types'
 
 const initialState = {
@@ -42,6 +44,12 @@ const reducer = (state = initialState, {type, payload}) => {
                 detail: payload
             }
 
+        case CLEAN_DETAIL:
+            return {
+                ...state,
+                detail: []
+            }
+
         case GET_BY_NAME:
             return {
                 ...state,
@@ -66,6 +74,19 @@ const reducer = (state = initialState, {type, payload}) => {
                 detail: payload,
                 allPokemons: [payload, ...state.allPokemons]
             }
+
+        case UPDATE_POKEMON:
+
+            const updatedAllPokemons = state.allPokemons.map(pokemon => {
+                if(pokemon.id === payload.id) return payload
+
+                return pokemon
+            })
+
+        return {
+            ...state,
+            allPokemons: updatedAllPokemons
+        }
 
         case DELETE_POKEMON:
 

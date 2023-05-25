@@ -17,16 +17,7 @@ const Search = () => {
             
                     {
 
-                    
-                        pokemonSearch.length === 0 
-                        ?   (
-                                <div className='loading'>
-                                    <img src="https://media.tenor.com/-Uz6xHwMa4gAAAAj/snorlax-snorlax-pokemon.gif" alt="aa" />
-                                    <p className="data">Loading...</p>
-                                </div>
-                            )
-                    
-                        :   pokemonSearch?.map(pokemon => {
+                       pokemonSearch?.map(pokemon => {
 
                                 return (
 

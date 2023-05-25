@@ -7,6 +7,7 @@ import Navbar from './components/Navbar/Navbar'
 import Detail from './components/Detail/Detail'
 import Search from './components/Search/Search'
 import Form from './components/Form/Form'
+import Edit from './components/Edit/Edit'
 
 function App() {
 
@@ -22,6 +23,7 @@ function App() {
         <Route path='/home' element={<Home />} />
         <Route path='/search' element={<Search />} />
         <Route path='/create' element={<Form />}/>
+        <Route path='/update/:id' element={<Edit />} /> 
         <Route path='/detail/:id' element={<Detail />} />
       </Routes>
       

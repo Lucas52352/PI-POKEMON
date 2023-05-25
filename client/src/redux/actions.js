@@ -15,7 +15,9 @@ import {
     ORDER_AZ,
     ORDER_ZA,
     ORDER_ATTACK_ASC,
-    ORDER_ATTACK_DESC
+    ORDER_ATTACK_DESC,
+    CLEAN_DETAIL,
+    UPDATE_POKEMON
 } from './action-types'
 
 export const getAllPokemons = () => {
@@ -49,10 +51,6 @@ export const getPokemonsById = (id) => {
         try {
             const { data } = await axios.get(endpoint)
 
-            console.log(data);
-            console.log(endpoint);
-
-
             if(!data) throw new Error(`Parece que no quiere salir de su pokebola`)
             return dispatch({
                 type: GET_POKEMON_BY_ID,
@@ -63,6 +61,12 @@ export const getPokemonsById = (id) => {
         catch (error) {
             console.log(error.response);
         }
+    }
+}
+
+export const cleanDetail = () => {
+    return {
+        type: CLEAN_DETAIL
     }
 }
 
@@ -86,31 +90,11 @@ export const getTypes = () => {
     }
 }
 
-export const deletePokemon = (id) => {
-
-    const endpoint = `http://localhost:3001/pokemon/delete/${id}`
-
-    return async (dispatch) => {
-        try {
-
-            const { data } = await axios.delete(endpoint)
-
-            return dispatch({
-                type: DELETE_POKEMON,
-                payload: data
-            })
-            
-        } catch (error) {
-            console.log(error.message);
-        }
-    }
-}
-
 export const createPokemon = (pokemonData) => {
 
     const endpoint = 'http://localhost:3001/pokemon/create';
   
-    return async (dispatch) => {
+    return async(dispatch) => {
 
       try {
 
@@ -129,8 +113,48 @@ export const createPokemon = (pokemonData) => {
 
       }
     }
-  }
-  
+}
+
+export const updatePokemon = (id, pokemonData) => {
+    const endpoint = `http://localhost:3001/pokemon/update/${id}`
+
+    return async(dispatch) => {
+        try {
+            const { data } = await axios.put(endpoint, pokemonData)
+            console.log(data)
+
+            return dispatch({
+                type: UPDATE_POKEMON,
+                payload: data
+                
+            })
+
+
+        } catch(error) {
+            alert('Couldn´t update Pokemom')
+        }
+    }
+}
+
+export const deletePokemon = (id) => {
+
+    const endpoint = `http://localhost:3001/pokemon/delete/${id}`
+
+    return async (dispatch) => {
+        try {
+
+            const { data } = await axios.delete(endpoint)
+
+            return dispatch({
+                type: DELETE_POKEMON,
+                payload: data
+            })
+            
+        } catch (error) {
+            alert('Can´t delete pokemons from the API')
+        }
+    }
+} 
 
 export const nextPage = () => {
     return {

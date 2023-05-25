@@ -5,6 +5,7 @@ import './Pagination.css'
 
 const Paginate = ({ cantPages }) => {
   const numPage = useSelector((state) => state.numPage)
+  const allPokemons = useSelector((state) => state.allPokemons)
   const dispatch = useDispatch();
 
   const next = () => {
@@ -37,7 +38,11 @@ const Paginate = ({ cantPages }) => {
           </div>
       )}
 
-      <h2 className='numPage'>{numPage}</h2>
+      
+      {
+    
+      allPokemons.length !== 0 &&  <h2 className='numPage'>{numPage}</h2>
+      }
 
       {numPage < cantPages && (
 

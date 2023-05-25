@@ -23,8 +23,12 @@ const Card = ({ id, name, image, types} ) => {
 
             <div className='cardButtons'>
 
+            <Link to={`/update/${id}`}>
             <button className='updateBtn'> ✎ </button>
-            <button onClick={onDelete} className='closeBtn'> X </button>
+            </Link>
+
+
+            <button onClick={onDelete} className='closeBtn'> ✖️ </button>
 
             </div>
                 <Link to={`/detail/${id}`}>

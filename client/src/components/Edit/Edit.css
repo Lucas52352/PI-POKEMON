@@ -1,0 +1,69 @@
+@import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@600&family=Dhurjati&family=DotGothic16&family=Geo&family=Joti+One&family=Orbitron&display=swap');
+
+.allForm {
+    display: flex;
+    justify-content: center;
+    font-family: 'Orbitron', sans-serif;
+    font-weight:bolder;
+    align-items: center;
+}
+
+.updateData {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.formA {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+    margin: 10px;
+    background-color: rgba(150, 150, 150, 0.486);
+}
+
+.formB {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+    margin: 10px;
+    background-color: rgba(150, 150, 150, 0.486);
+}
+
+.formInput {
+    margin: 15px;
+    height: 25px;
+
+    font-size: 20px;
+}
+
+.formTypes {
+    display: flex;
+    flex-direction: row;
+    background-color: rgba(150, 150, 150, 0.486);
+    font-family: 'Orbitron', sans-serif;
+}
+
+.selector {
+    display: flex;
+    margin: 18px;
+    height: 25px;
+    width: 140px;
+    font-size: 20px;
+}
+.formButton{ 
+    background-color: rgb(34, 253, 253);
+    border: none;
+    transition: .5s;
+}
+
+.formButton:hover {
+    cursor: pointer;
+    background-color: rgb(28, 123, 255);
+    box-shadow: 10px;
+}
