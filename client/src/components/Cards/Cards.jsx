@@ -8,6 +8,8 @@ const Cards = () => {
   const filteredPokemons = useSelector((state) => state.filteredPokemons)
   const allPokemons = useSelector((state) => state.allPokemons)
 
+  console.log(allPokemons);
+
   let from = (numPage - 1) * 12;
   let to = numPage * 12;
 
@@ -27,7 +29,7 @@ const Cards = () => {
           (viewPokemons.length === 0) 
           ?  (
             <div className='loading'>
-              <img src="https://media.tenor.com/-Uz6xHwMa4gAAAAj/snorlax-snorlax-pokemon.gif" alt="aa" />
+              <img src="https://media.tenor.com/-Uz6xHwMa4gAAAAj/snorlax-snorlax-pokemon.gif" alt="Loading.gif" />
               <p className='data' >Loading...</p>
             </div>
           ) 
@@ -41,7 +43,9 @@ const Cards = () => {
                 name={pokemon.name}
                 image={pokemon.image}
                 types={pokemon.types}
+                createdInDB={pokemon.createdInDB} 
               />
+
             </div>
           )
 

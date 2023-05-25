@@ -1,5 +1,6 @@
 import { useSelector, useDispatch } from "react-redux";
-import { getTypes, getAllPokemons } from "../../redux/actions";
+import { useParams } from 'react-router-dom'
+import { getTypes, getPokemonsById } from "../../redux/actions";
 import './Edit.css'
 import { useEffect, useState } from "react"
 import { updatePokemon} from "../../redux/actions";
@@ -7,9 +8,12 @@ import { updatePokemon} from "../../redux/actions";
 const Edit = () => {
 
     const dispatch = useDispatch()
+    const { id } = useParams()
 
     const types = useSelector((state) => state.allTypes)
-    const allPokemons = useSelector((state) => state.allPokemons)
+    const detail = useSelector((state) => state.detail)
+
+    console.log(detail);
 
     const [updateData, setUpdateData] = useState({
         name: "",
@@ -33,30 +37,11 @@ const Edit = () => {
         })
     }
 
-    const currentPokemon = (selectedPokemon) => {
-
-        const pokemonToUpdate = allPokemons.find(pokemon => pokemon.id === selectedPokemon.id)
-
-        if(pokemonToUpdate){
-            setUpdateData({
-                name: pokemonToUpdate.name,
-                HP: pokemonToUpdate.HP,
-                armor: pokemonToUpdate.armor,
-                attack: pokemonToUpdate.attack,
-                height: pokemonToUpdate.height,
-                weight: pokemonToUpdate.weight,
-                speed: pokemonToUpdate.speed,
-                image: pokemonToUpdate.image,
-                types: pokemonToUpdate.types,
-            })
-        }
-    }
-      
-
     useEffect(() => {
 
         dispatch(getTypes())
-        dispatch(getAllPokemons())
+        dispatch(getPokemonsById(id))
+        setUpdateData(detail)
 
     }, [dispatch])
 

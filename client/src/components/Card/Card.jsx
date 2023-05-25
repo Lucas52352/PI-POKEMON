@@ -3,7 +3,7 @@ import { deletePokemon, getAllPokemons } from '../../redux/actions'
 import { useDispatch } from 'react-redux'
 import './Card.css'
 
-const Card = ({ id, name, image, types} ) => {
+const Card = ({ id, name, image, types, createdInDB} ) => {
 
     const dispatch = useDispatch()
     const type = types?.join(' - ')
@@ -24,11 +24,11 @@ const Card = ({ id, name, image, types} ) => {
             <div className='cardButtons'>
 
             <Link to={`/update/${id}`}>
-            <button className='updateBtn'> ✎ </button>
+            <button className='updateBtn' disabled={!createdInDB}> ✎ </button>
             </Link>
 
 
-            <button onClick={onDelete} className='closeBtn'> ✖️ </button>
+            <button onClick={onDelete} className='closeBtn' disabled={!createdInDB}> ✖️ </button>
 
             </div>
                 <Link to={`/detail/${id}`}>

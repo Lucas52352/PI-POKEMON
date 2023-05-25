@@ -44,6 +44,10 @@
     background-color: rgb(255, 24, 109);
 }
 
+.closeBtn:disabled {
+    background-color: gray;
+}
+
 .name {
     font-family: 'Dhurjati', sans-serif;
 }
@@ -81,4 +85,8 @@
 
 .updateBtn:hover {
     background-color: rgb(24, 255, 139);
+}
+
+.updateBtn:disabled {
+    background-color: grey;
 }
