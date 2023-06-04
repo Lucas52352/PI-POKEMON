@@ -1,4 +1,6 @@
 const { Pokemons, Types } = require('../../db');
+const AWS = require('aws-sdk');
+const { S3Client } = require('../../utils/S3Client');
 
 const createPokemon = async (name, image, HP, attack, armor, speed, height, weight, types) => {
 
@@ -7,6 +9,8 @@ const createPokemon = async (name, image, HP, attack, armor, speed, height, weig
   if (foundPoke) {
     throw new Error('That pokemon has already been created');
   }
+
+  
 
   const createdPokemon = await Pokemons.create({
     name: name,
@@ -19,13 +23,18 @@ const createPokemon = async (name, image, HP, attack, armor, speed, height, weig
     image: image,
   });
 
+  const s3Client = new S3Client()
+  s3Client.uploadFile()
+
   const typeInstances = await Types.findAll({
     where: { name: types },
   });
 
+  console.log(typeInstances);
   await createdPokemon.addTypes(typeInstances);
 
   const tipo = typeInstances.map((elem) => elem.name);
+
 
   return {
     id: createdPokemon.id,
@@ -37,7 +46,7 @@ const createPokemon = async (name, image, HP, attack, armor, speed, height, weig
     height: createdPokemon.height,
     weight: createdPokemon.weight,
     image: createdPokemon.image,
-    types: tipo 
+    types: tipo
   }
 };
 

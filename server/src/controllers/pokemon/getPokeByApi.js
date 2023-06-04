@@ -1,6 +1,6 @@
 const axios = require('axios')
 
-const getPokeByApi = async (currentURL = `https://pokeapi.co/api/v2/pokemon/?limit=60`) => {
+const getPokeByApi = async (currentURL = `https://pokeapi.co/api/v2/pokemon/?limit=50`) => {
     
 
     const resultApi = await axios.get(currentURL)

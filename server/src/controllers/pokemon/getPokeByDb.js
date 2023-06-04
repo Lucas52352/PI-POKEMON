@@ -15,6 +15,8 @@ const getPokemonsDb = async () => {
 
         const types = pokemons.Types.map(type => type.name)
 
+        console.log(types);
+
         return {
             id: pokemons.id,
             name: pokemons.name,

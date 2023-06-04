@@ -4,6 +4,8 @@ let updatePokemon = async (id, name, image, HP, attack, armor, speed, height, we
 
   let pokemonToUpdate = await Pokemons.findOne({ where: { id: id } });
 
+  console.log(pokemonToUpdate);
+
   let updates = {};
 
   if (name !== undefined) updates.name = name;
@@ -15,13 +17,18 @@ let updatePokemon = async (id, name, image, HP, attack, armor, speed, height, we
   if (height !== undefined) updates.height = height;
   if (weight !== undefined) updates.weight = weight;
 
+  console.log('upd:',updates);
+
   await pokemonToUpdate.update(updates);
 
   if (types) {
 
+    console.log(types);
     await pokemonToUpdate.setTypes([]);
 
     let postTypes = await Types.findAll({ where: { name: types } });
+
+    console.log('post', postTypes);
 
     await pokemonToUpdate.addTypes(postTypes);
 
