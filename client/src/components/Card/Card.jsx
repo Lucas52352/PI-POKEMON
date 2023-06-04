@@ -5,6 +5,7 @@ import './Card.css'
 
 const Card = ({ id, name, image, types, createdInDB} ) => {
 
+    const img = image || 'https://pokemonpibucket.s3.us-east-2.amazonaws.com/Screenshot%20from%202023-04-14%2012-37-39.png'
     const dispatch = useDispatch()
     const type = types?.join(' - ')
 
@@ -37,7 +38,7 @@ const Card = ({ id, name, image, types, createdInDB} ) => {
 
                     <h2 className='name'>{name}</h2>
 
-                    <img src={image} alt={name} className='cardImg' />
+                    <img src={img} alt={name} className='cardImg' />
 
                     <h4 className='dataCard'>{type}</h4>
 

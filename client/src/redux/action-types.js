@@ -23,7 +23,3 @@ export const ORDER_ZA = 'ORDER_ZA'
 
 export const ORDER_ATTACK_ASC = 'ORDER_ATTACK_ASC'
 export const ORDER_ATTACK_DESC = 'ORDER_ATTACK_DESC'
-
-
-// -  Botones/Opciones para **filtrar** por tipo, y por si su origen es de la API o de la base de datos (creados por nosotros desde el formulario).
-// -  Botones/Opciones para **ordenar** tanto ascendentemente como descendentemente los pokemones por orden alfabético y por ataque.

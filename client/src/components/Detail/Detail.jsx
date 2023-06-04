@@ -8,6 +8,8 @@ const Detail = () => {
 
     const dispatch = useDispatch()
     const detail = useSelector(store => store.detail)
+
+    console.log(detail);
     const { id } = useParams()
 
     const types = detail.types?.join(' - ')

@@ -9,8 +9,6 @@ const Home = () => {
 
     const dispatch = useDispatch()
     const types = useSelector((state) => state.allTypes)
-    // const filtered = useSelector((state) => state)
-    
 
     useEffect(() => {
         dispatch(getAllPokemons())

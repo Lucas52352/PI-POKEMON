@@ -26,6 +26,8 @@ const Edit = () => {
         types: [],
       })
 
+    console.log(updateData.types);
+    
     const [success, setSuccess] = useState(null)
 
     const enabled = useMemo(() => {
@@ -233,7 +235,7 @@ const Edit = () => {
                             {
                                 types.map(type => {
                                     return (
-                                        <option value={type.id} key={type.id}>"{type.name}"</option>
+                                        <option value={type.id} key={type.id}>{type.name}</option>
                                         )
                                 })
                             }

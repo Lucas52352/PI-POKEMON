@@ -91,8 +91,6 @@ const reducer = (state = initialState, {type, payload}) => {
         case DELETE_POKEMON:
 
             const filtered = state.allPokemons.filter(pokemon => pokemon.id !== payload.id)
-            console.log('filtered:',filtered, 
-            'state:', ...state);
 
             return {
                 ...state,
@@ -131,7 +129,6 @@ const reducer = (state = initialState, {type, payload}) => {
                 ...state,
                 filteredPokemons: filterByType,
             }
-              
 
         case FILTER_BY_SOURCE:
 

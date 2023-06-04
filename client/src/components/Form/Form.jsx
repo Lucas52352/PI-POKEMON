@@ -196,7 +196,7 @@ const Form = () => {
                     <label htmlFor="image">Image: *</label>
                     <input 
                         className="formInput" 
-                        type="url" 
+                        type="file" 
                         name="image" 
                         placeholder="select your file" 
                         onChange={handleChange}
